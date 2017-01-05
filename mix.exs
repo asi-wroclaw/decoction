@@ -39,7 +39,9 @@ defmodule Decoction.Mixfile do
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
      {:phoenix_haml, "~> 0.2.1"},
-     {:credo, "~> 0.5", only: [:dev, :test]}]
+     {:credo, "~> 0.5", only: [:dev, :test]},
+     {:comeonin, "~> 3.0"}
+   ]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
