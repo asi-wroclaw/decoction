@@ -9,7 +9,6 @@ defmodule Decoction.SessionController do
   def create(conn, %{"session" => %{"email" => email, "password" => password}}) do
     case Decoction.Auth.verify_email_and_password(conn, email, password, repo: Repo) do
       {:ok, user, conn} ->
-        IEx.pry
         conn
         |> Decoction.Auth.login(user)
         |> put_flash(:info, "Signed in successfully.")
