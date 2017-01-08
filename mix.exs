@@ -19,7 +19,7 @@ defmodule Decoction.Mixfile do
   def application do
     [mod: {Decoction, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex]]
+                    :phoenix_ecto, :postgrex, :comeonin]]
   end
 
   # Specifies which paths to compile per environment.
@@ -39,7 +39,11 @@ defmodule Decoction.Mixfile do
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
      {:phoenix_haml, "~> 0.2.1"},
-     {:credo, "~> 0.5", only: [:dev, :test]}]
+     {:credo, "~> 0.5", only: [:dev, :test]},
+     {:comeonin, "~> 3.0"},
+     {:guardian, "~> 0.14.2"},
+     {:phoenix_haml, "~> 0.2.1"}
+   ]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
