@@ -12,7 +12,15 @@ config :decoction, Decoction.Endpoint,
   code_reloader: true,
   check_origin: false,
   watchers: [node: ["node_modules/brunch/bin/brunch", "watch", "--stdin",
-                    cd: Path.expand("../", __DIR__)]]
+                    cd: Path.expand("../", __DIR__)]],
+  live_reload: [
+    patterns: [
+      ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
+      ~r{web/views/.*(ex)$},
+      ~r{web/templates/.*(eex|haml)$}
+    ]
+  ]
+
 
 
 # Watch static and templates for browser reloading.
