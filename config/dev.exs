@@ -50,3 +50,13 @@ config :decoction, Decoction.Repo,
   hostname: "localhost",
   port: "5432",
   pool_size: 10
+
+config :guardian, Guardian,
+  allowed_algos: ["HS512"],
+  verify_module: Guardian.JWT,
+  issuer: "Decoction",
+  ttl: { 30, :days },
+  allowed_drift: 2000,
+  verify_issuer: true,
+  secret_key: "this is very secret, yes, very secret.",
+  serializer: Decoction.GuardianSerializer
