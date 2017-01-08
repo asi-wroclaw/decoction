@@ -9,14 +9,26 @@ defmodule Decoction.Router do
     plug :put_secure_browser_headers
   end
 
+  pipeline :session do
+    plug Guardian.Plug.VerifySession
+    plug Guardian.Plug.LoadResource
+  end
+
+
   pipeline :api do
     plug :accepts, ["json"]
   end
 
   scope "/", Decoction do
-    pipe_through :browser # Use the default browser stack
+    pipe_through [:browser, :session]
 
     get "/", PageController, :index
+    resources "/users", UserController
+
+    get "/login", SessionController, :new, as: :login
+    post "/login", SessionController, :create, as: :login
+    get "/logout", SessionController, :delete, as: :logout
+    delete "/logout", SessionController, :delete, as: :logout
   end
 
   # Other scopes may use custom stacks.
