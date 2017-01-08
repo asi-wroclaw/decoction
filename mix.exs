@@ -41,7 +41,8 @@ defmodule Decoction.Mixfile do
      {:phoenix_haml, "~> 0.2.1"},
      {:credo, "~> 0.5", only: [:dev, :test]},
      {:comeonin, "~> 3.0"},
-     {:guardian, "~> 0.14"}
+     {:guardian, "~> 0.14"},
+     {:phoenix_haml, "~> 0.2.1"}
    ]
   end
 
