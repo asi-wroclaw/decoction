@@ -5,6 +5,9 @@
 # is restricted to this project.
 use Mix.Config
 
+config :phoenix, :template_engines,
+  haml: PhoenixHaml.Engine
+
 # General application configuration
 config :decoction,
   ecto_repos: [Decoction.Repo]
