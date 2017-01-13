@@ -3,7 +3,7 @@ defmodule Decoction.SessionController do
   alias Decoction.User
 
   def new(conn, _) do
-    render(conn, "new.html")
+    render conn, "new.html"
   end
 
   def create(conn, %{"session" => %{"email" => email, "password" => password}}) do

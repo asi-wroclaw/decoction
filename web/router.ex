@@ -12,6 +12,7 @@ defmodule Decoction.Router do
   pipeline :session do
     plug Guardian.Plug.VerifySession
     plug Guardian.Plug.LoadResource
+    plug Decoction.CurrentUser
   end
 
 
