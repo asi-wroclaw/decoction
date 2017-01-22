@@ -1,12 +1,19 @@
 defmodule Decoction.SessionController do
   use Decoction.Web, :controller
-  alias Decoction.User
+  use Guardian.Phoenix.Controller
 
-  def new(conn, _) do
-    render conn, "new.html"
+  def new(conn, _params, user, _claims) do
+    case user do
+      nil ->
+        render conn, "new.html"
+      user ->
+        conn
+        |> put_flash(:info, "You are already logged in.")
+        |> redirect(to: "/")
+    end
   end
 
-  def create(conn, %{"session" => %{"email" => email, "password" => password}}) do
+  def create(conn, %{"session" => %{"email" => email, "password" => password}}, user = nil, _claims) do
     case Decoction.Auth.verify_email_and_password(conn, email, password, repo: Repo) do
       {:ok, user, conn} ->
         conn
@@ -20,7 +27,7 @@ defmodule Decoction.SessionController do
     end
   end
 
-  def delete(conn, _params) do
+  def delete(conn, _params, _user, _claims) do
     conn
     |> Decoction.Auth.logout()
     |> put_flash(:info, "Logged out successfully.")
