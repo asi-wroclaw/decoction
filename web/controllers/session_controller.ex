@@ -6,14 +6,14 @@ defmodule Decoction.SessionController do
     case user do
       nil ->
         render conn, "new.html"
-      user ->
+      _ ->
         conn
         |> put_flash(:info, "You are already logged in.")
         |> redirect(to: "/")
     end
   end
 
-  def create(conn, %{"session" => %{"email" => email, "password" => password}}, user = nil, _claims) do
+  def create(conn, %{"session" => %{"email" => email, "password" => password}}, _user = nil, _claims) do
     case Decoction.Auth.verify_email_and_password(conn, email, password, repo: Repo) do
       {:ok, user, conn} ->
         conn
