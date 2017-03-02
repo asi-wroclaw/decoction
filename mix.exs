@@ -43,7 +43,8 @@ defmodule Decoction.Mixfile do
      {:comeonin, "~> 3.0"},
      {:guardian, "~> 0.14.2"},
      {:phoenix_haml, "~> 0.2.1"},
-     {:arc_ecto, "~> 0.5.0"}
+     {:arc_ecto, "~> 0.5.0"},
+     {:uuid, "~> 1.1"}
    ]
   end
 
