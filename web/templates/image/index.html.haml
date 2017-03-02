@@ -1,0 +1,31 @@
+%h2 Listing images
+
+%table.table
+  %thead
+    %tr
+      %th Text
+      %th Arc
+      %th WTF
+      %th Source link
+      %th Tags
+      %th Nsfw
+      %th User
+
+      %th
+  %tbody
+    - for image <- @images do
+      %tr
+      %td= image.text
+      %td= link(image.image.file_name, to: Decoction.ImageUpload.url({image.image, image}, :original))
+      %td= link("derp", to: static_path(@conn, "/uploads/image/#{image.image.file_name}"))
+      %td= image.source_link
+      %td= image.tags
+      %td= image.nsfw
+      %td= image.user_id
+
+      %td.text-right
+        = link "Show", to: image_path(@conn, :show, image), class: "btn btn-default btn-xs"
+        = link "Edit", to: image_path(@conn, :edit, image), class: "btn btn-default btn-xs"
+        = link "Delete", to: image_path(@conn, :delete, image), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs"
+
+= link "New image", to: image_path(@conn, :new)

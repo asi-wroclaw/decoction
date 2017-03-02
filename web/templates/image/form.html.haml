@@ -1,0 +1,37 @@
+- form_for @changeset, @action, [multipart: true], fn f ->
+  - if @changeset.action do
+    .alert.alert-danger
+      %p
+        Oops, something went wrong! Please check the errors below.
+
+  .form-group
+    = label f, :text, class: "control-label"
+    = text_input f, :text, class: "form-control"
+    = error_tag f, :text
+
+  .form-group
+    = label f, :url, class: "control-label"
+    = text_input f, :url, class: "form-control"
+    = error_tag f, :url
+
+  .form-group
+    = label f, :source_link, class: "control-label"
+    = text_input f, :source_link, class: "form-control"
+    = error_tag f, :source_link
+
+  .form-group
+    = label f, :tags, class: "control-label"
+    = text_input f, :tags, class: "form-control"
+    = error_tag f, :tags
+
+  .form-group
+    = label f, :nsfw, class: "control-label"
+    = checkbox f, :nsfw, class: "form-control"
+    = error_tag f, :nsfw
+
+  .form-group
+    = label f, "Select image", class: "control-label"
+    = file_input f, :image, class: "form-control"
+
+  .form-group
+    = submit "Submit", class: "btn btn-primary"
