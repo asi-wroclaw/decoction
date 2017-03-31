@@ -1,4 +1,3 @@
-require IEx
 defmodule Decoction.ImageController do
   use Decoction.Web, :controller
   alias Decoction.Image

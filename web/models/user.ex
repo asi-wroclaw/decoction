@@ -12,8 +12,8 @@ defmodule Decoction.User do
 
   def changeset(model, params \\ :empty) do
     model
-    |> cast(params, ~w(email), [])
-    |> validate_required([:email])
+    |> cast(params, ~w(email name))
+    |> validate_required(~w(email))
     |> validate_format(:email, ~r/@/)
     |> unique_constraint(:email)
   end
@@ -21,7 +21,8 @@ defmodule Decoction.User do
   def registeration_changeset(model, params) do
     model
     |> changeset(params)
-    |> cast(params, ~w(password), [])
+    |> cast(params, ~w(password))
+    |> validate_required(~w(password))
     |> validate_length(:password, min: 6)
     |> put_password_hash()
   end

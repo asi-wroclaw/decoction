@@ -4,8 +4,7 @@
   %thead
     %tr
       %th Text
-      %th Arc
-      %th WTF
+      %th Image
       %th Source link
       %th Tags
       %th Nsfw
@@ -17,7 +16,6 @@
       %tr
       %td= image.text
       %td= link(image.image.file_name, to: Decoction.ImageUpload.url({image.image, image}, :original))
-      %td= link("derp", to: static_path(@conn, "/uploads/image/#{image.image.file_name}"))
       %td= image.source_link
       %td= image.tags
       %td= image.nsfw

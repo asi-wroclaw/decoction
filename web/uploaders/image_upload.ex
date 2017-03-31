@@ -1,4 +1,3 @@
-require IEx
 defmodule Decoction.ImageUpload do
   use Arc.Definition
   use Arc.Ecto.Definition
@@ -6,7 +5,11 @@ defmodule Decoction.ImageUpload do
   @versions [:original]
 
   def storage_dir(version, {file, scope}) do
-    "uploads/images/#{UUID.uuid4()}"
+    "uploads/images/"
+  end
+
+  def filename(version, {file, scope}) do
+    "#{UUID.uuid5(:nil, file.file_name)}"
   end
 
   def validate({file, _}) do
