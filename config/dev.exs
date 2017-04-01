@@ -21,8 +21,6 @@ config :decoction, Decoction.Endpoint,
     ]
   ]
 
-
-
 # Watch static and templates for browser reloading.
 config :decoction, Decoction.Endpoint,
   live_reload: [
@@ -60,3 +58,6 @@ config :guardian, Guardian,
   verify_issuer: true,
   secret_key: "this is very secret, yes, very secret.",
   serializer: Decoction.GuardianSerializer
+
+config :arc,
+  storage: Arc.Storage.Local

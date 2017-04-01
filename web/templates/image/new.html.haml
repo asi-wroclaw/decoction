@@ -1,0 +1,5 @@
+%h2 New image
+
+= render "form.html", changeset: @changeset, action: image_path(@conn, :create)
+
+= link "Back", to: image_path(@conn, :index)

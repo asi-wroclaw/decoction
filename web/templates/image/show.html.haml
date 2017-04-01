@@ -1,0 +1,31 @@
+%h2 Show image
+
+%ul
+
+  %li
+    %strong Text:
+    = @image.text
+
+  %li
+    %strong Url:
+    = @image.url
+
+  %li
+    %strong Source link:
+    = @image.source_link
+
+  %li
+    %strong Tags:
+    = @image.tags
+
+  %li
+    %strong Nsfw:
+    = @image.nsfw
+
+  %li
+    %strong User:
+    = @image.user_id
+
+
+= link "Edit", to: image_path(@conn, :edit, @image)
+= link "Back", to: image_path(@conn, :index)

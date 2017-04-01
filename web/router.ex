@@ -30,6 +30,8 @@ defmodule Decoction.Router do
     post "/login", SessionController, :create, as: :login
     get "/logout", SessionController, :delete, as: :logout
     delete "/logout", SessionController, :delete, as: :logout
+
+    resources "/images", ImageController
   end
 
   # Other scopes may use custom stacks.

@@ -19,7 +19,7 @@ defmodule Decoction.Mixfile do
   def application do
     [mod: {Decoction, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex, :comeonin]]
+                    :phoenix_ecto, :postgrex, :comeonin, :arc_ecto]]
   end
 
   # Specifies which paths to compile per environment.
@@ -42,7 +42,9 @@ defmodule Decoction.Mixfile do
      {:credo, "~> 0.5", only: [:dev, :test]},
      {:comeonin, "~> 3.0"},
      {:guardian, "~> 0.14.2"},
-     {:phoenix_haml, "~> 0.2.1"}
+     {:phoenix_haml, "~> 0.2.1"},
+     {:arc_ecto, "~> 0.5.0"},
+     {:uuid, "~> 1.1"}
    ]
   end
 
