@@ -1,9 +1,10 @@
 defmodule Decoction.ImageController do
   use Decoction.Web, :controller
   alias Decoction.Image
+  alias Plug.Conn
   plug Guardian.Plug.EnsureAuthenticated, handler: Decoction.Auth
 
-  def index(conn, params) do
+  def index(conn, _params) do
     images = Repo.all(Image)
     render(conn, "index.html", images: images)
   end
@@ -13,10 +14,12 @@ defmodule Decoction.ImageController do
     render(conn, "new.html", changeset: changeset)
   end
 
-  def create(conn, %{"image" => image_params}) do
-    changeset = Image.changeset(%Image{}, image_params)
+  def create(conn = %Conn{assigns: %{current_user: current_user}}, %{"image" => image_params}) do
+    image_changeset = current_user
+    |> build_assoc(:images)
+    |> Image.changeset(image_params)
 
-    case Repo.insert(changeset) do
+    case Repo.insert(image_changeset) do
       {:ok, _image} ->
         conn
         |> put_flash(:info, "Image created successfully.")

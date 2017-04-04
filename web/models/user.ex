@@ -6,6 +6,7 @@ defmodule Decoction.User do
     field :email, :string
     field :password, :string, virtual: true
     field :encrypted_password, :string
+    has_many :images, Decoction.Image
 
     timestamps
   end
