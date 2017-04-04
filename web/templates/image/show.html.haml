@@ -8,7 +8,7 @@
 
   %li
     %strong Url:
-    = @image.url
+    = link(@image.image.file_name, to: Decoction.ImageUpload.url({@image.image, @image}, :original))
 
   %li
     %strong Source link:
